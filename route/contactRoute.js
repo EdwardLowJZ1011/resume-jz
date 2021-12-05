@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const nodemailer = require('nodemailer');
-const smtpTransport = require("nodemailer-smtp-transport");
 
 router.post("/contact", (req, res) => {
   let data = req.body;
@@ -12,13 +11,13 @@ router.post("/contact", (req, res) => {
     return res.json({ msg: "Please Fill All The Fields!" });
   }
 
-  let smtpTransporter = nodemailer.createTransport(smtpTransport({
+  let smtpTransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'edwardlow199701@gmail.com',
         pass: 'low@1011'
     }
-  }));
+  });
   
   let mailOptions = {
     from: 'AutoRobot <noply@gmail.com>',
