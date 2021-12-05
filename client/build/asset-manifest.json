@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4b7ebf74.chunk.css",
+    "main.js": "/static/js/main.3bb1a878.chunk.js",
+    "main.js.map": "/static/js/main.3bb1a878.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.900dd88b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.900dd88b.js.map",
+    "static/css/2.591db2b6.chunk.css": "/static/css/2.591db2b6.chunk.css",
+    "static/js/2.676b06de.chunk.js": "/static/js/2.676b06de.chunk.js",
+    "static/js/2.676b06de.chunk.js.map": "/static/js/2.676b06de.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.591db2b6.chunk.css.map": "/static/css/2.591db2b6.chunk.css.map",
+    "static/css/main.4b7ebf74.chunk.css.map": "/static/css/main.4b7ebf74.chunk.css.map",
+    "static/js/2.676b06de.chunk.js.LICENSE.txt": "/static/js/2.676b06de.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/Poppins-Thin.a61eaf4c.ttf",
+    "static/media/UK.8411a74a.svg": "/static/media/UK.8411a74a.svg",
+    "static/media/Testimonial.css": "/static/media/bg-1.e7a118c3.jpg",
+    "static/media/Home.css": "/static/media/bg.03b43f31.jpg",
+    "static/media/china.b2b0e257.svg": "/static/media/china.b2b0e257.svg",
+    "static/media/education.svg": "/static/media/education.10cfa28a.svg",
+    "static/media/interests.svg": "/static/media/interests.809890a3.svg",
+    "static/media/lady.2c54ef6a.png": "/static/media/lady.2c54ef6a.png",
+    "static/media/mailz.d13d5e32.jpeg": "/static/media/mailz.d13d5e32.jpeg",
+    "static/media/man.bd25aa38.png": "/static/media/man.bd25aa38.png",
+    "static/media/mike.8af8bcf1.png": "/static/media/mike.8af8bcf1.png",
+    "static/media/my.3da21ccd.svg": "/static/media/my.3da21ccd.svg",
+    "static/media/AboutMe.css": "/static/media/profilephoto.d62298f5.jpg",
+    "static/media/programming-skills.svg": "/static/media/programming-skills.d19983a9.svg",
+    "static/media/projects.svg": "/static/media/projects.2b352a52.svg",
+    "static/media/Profile.css": "/static/media/resume_photo.e1dd1c20.jpg",
+    "static/media/work-history.svg": "/static/media/work-history.a566475d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.900dd88b.js",
+    "static/css/2.591db2b6.chunk.css",
+    "static/js/2.676b06de.chunk.js",
+    "static/css/main.4b7ebf74.chunk.css",
+    "static/js/main.3bb1a878.chunk.js"
+  ]
+}
