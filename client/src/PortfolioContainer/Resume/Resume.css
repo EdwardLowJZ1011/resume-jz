@@ -185,21 +185,34 @@
   @media only screen and (max-width: 1023px) {
     .resume-content {
       display: flex;
+      margin-left: 65px;
       flex-direction: column;
       align-items: center;
     }
-  
+    
     .bullets {
       width: 90%;
     }
-  
+
+    .resume-description-text{
+      width: 75%;
+    }
+
+    .resume-screen-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: auto;
+      width: 70%;
+    }
+    
     .resume-card {
       height: fit-content;
       display: flex;
       flex-direction: column;
       margin: 30px 0;
       align-items: center;
-      width: 90%;
+      width: 80%;
     }
   
     .resume-bullet-details {
@@ -216,5 +229,10 @@
     .selected-bullet {
       width: 100%;
     }
+    
+    .resume-heading{
+      flex-direction: column;
+    }
   }
   
+
