@@ -75,11 +75,11 @@ export default function Profile() {
               </h1>
               {language == "EN" ? (
                 <span className="profile-role-tagline">
-                  56 certificates (AlgoExpert, Coursera, Udemy), experienced on reactjs, flutter, Django, spark, ML.
+                  60 certificates (AlgoExpert, Coursera, Udemy), experienced on reactjs, flutter, Django, spark, ML.
                 </span>
               ) : (
                 <span className="profile-role-tagline">
-                  共获得56张技术证书(AlgoExpert, Coursera, Udemy)，具有reactjs, flutter, Django, spark, ML等开发能力。
+                  共获得60张技术证书(AlgoExpert, Coursera, Udemy)，具有reactjs, flutter, Django, spark, ML等开发能力。
                 </span>
               )}
             </span>

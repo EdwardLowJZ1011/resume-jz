@@ -1,7 +1,7 @@
 import React from "react";
 import { TOTAL_SCREENS } from "../utilities/commonUtils";
 
-export default function PortfolioContainer() {
+export default function PortfolioContainer (){
   const mapAllScreens = () => {
     return TOTAL_SCREENS.map((screen) =>
       screen.component ? (
@@ -16,5 +16,5 @@ export default function PortfolioContainer() {
     );
   };
 
-  return <div className='portfolio-container'>{mapAllScreens()}</div>;
+  return (<div className='portfolio-container'>{mapAllScreens()}</div>);
 }

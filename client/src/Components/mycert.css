@@ -1,0 +1,78 @@
+
+.cert-date {
+    background-color: #ff5823;
+    padding: 4px 12px;
+    font-weight: bold;
+    font-size: 14px;
+    width: fit-content;
+    min-width: 60%;
+    margin-left: 30%;
+    margin-top: 5%;
+    border-radius: 14px;
+    color: var(--white);
+}
+
+.cert-company{
+    padding-top: 2%;
+}
+
+.cert-description{
+    padding-top: 2%;
+}
+
+a.cert-link{
+    padding: 4px 12px;
+    margin-left: 30%;
+    background-color: #00008B;
+    margin-top: 15%;
+    min-width: 60%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 14px;
+    color: var(--white);
+}
+
+a.link-text:hover, a.link-text:active{
+    color: navy;
+    text-decoration: underline;
+  }
+
+a.link-text:link, a.link-text:visited{
+color:black;
+font-weight: bold;
+text-decoration: none;
+}
+
+img.cert_pic{
+    max-height: 200px;
+    max-width: 200px;
+    margin-left:10%;
+    padding: 5px;
+}
+
+.cert-title{
+    font-weight: bold; 
+}
+
+.cert-pages{
+    width: 10%;   
+}
+
+.cert-page-text{
+    margin-bottom: 5%;
+    padding: 5px;
+}
+
+.heading-text{
+    padding-top:10%;
+}
+
+.cert-filter{
+   margin-left: 90%;
+}
+
+.filter-title{
+    font-size: 12px;
+    font-style: italic;
+ }
