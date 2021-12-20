@@ -33,12 +33,13 @@ a.cert-link{
     color: var(--white);
 }
 
-a.link-text:hover, a.link-text:active{
+
+a.link-title:hover, a.link-title:active{
     color: navy;
     text-decoration: underline;
   }
 
-a.link-text:link, a.link-text:visited{
+a.link-title:link, a.link-title:visited{
 color:black;
 font-weight: bold;
 text-decoration: none;
@@ -76,3 +77,61 @@ img.cert_pic{
     font-size: 12px;
     font-style: italic;
  }
+
+ @media only screen and (min-width: 800px) and (max-width: 1025px) {
+     .info-main{
+         min-width: 100px;
+         margin-left: 15%;
+         font-size: 90%;
+     }
+     .link-title{
+        font-size: 90%;
+     }
+
+     .heading-text{
+         font-size: 28px;
+     }
+     .cert-filter{
+         margin-left: 85%;
+     }
+
+ }
+
+ @media only screen and (min-width: 300px) and (max-width: 350px) {
+    .info-main{
+        min-width: 40%;
+        margin-left: 15%;
+        font-size: 80%;
+    }
+
+    .link-title{
+        font-size: 80%;
+     }
+
+    .heading-text{
+        font-size: 20px;
+    }
+    img.cert_pic{
+        margin-left: 15%;
+        padding: 5px;
+    }
+
+    .cert-filter{
+        margin-left: 70%;
+    }
+    a.cert-link{
+        margin-left: 20%;
+    }
+    
+    .cert-date {
+        margin-left: 20%;
+    }
+
+    .cert-pages{
+        width: 50%;   
+    }
+
+    .cert-page-text{
+        display: None;
+    }
+}

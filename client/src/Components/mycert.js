@@ -118,7 +118,7 @@ function MyCert() {
           </aside>
           <div className="col-md-6">
             <div className="info-main">
-              <a href={certifcate.source} target="_blank" className="link-text">
+              <a href={certifcate.source} target="_blank" className="link-title">
                 {certifcate.title}
               </a>
               <div className="cert-company">
