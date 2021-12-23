@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import "./mycert.css";
 import Rating from "../utilities/Rating";
 import { StoreContext } from "../store";
-import '../assets/css/modal.css';
+import "../assets/css/modal.css";
 
 function importAll(r) {
   let images = {};
@@ -53,7 +53,7 @@ function MyCert() {
 
     pageIndex > loop && setPageIndex(loop);
 
-    for (var i = pageIndex - 5 < 0 ? 0 : pageIndex - 5; i < loop; i++) {
+    for (var i = pageIndex - 3 < 0 ? 0 : pageIndex - 3; i < loop; i++) {
       var classes =
         pageIndex === 1
           ? i === 0
@@ -74,31 +74,48 @@ function MyCert() {
           </a>
         </li>
       );
-      if (pagelist.length >= 8) break;
+      if (pagelist.length >= 5) break;
     }
     return (
       <ul className="pagination">
         {pageIndex > 1 && (
-          <li className="page-item">
-            <a
-              className="page-link"
-              onClick={(e) => setPageIndex(pageIndex - 1)}
-            >
-              Previous
-            </a>
-          </li>
+          <>
+            <li className="page-item">
+              <a className="page-link" onClick={(e) => setPageIndex(1)}>
+                {"<<"}
+              </a>
+            </li>
+            <li className="page-item">
+              <a
+                className="page-link"
+                onClick={(e) => setPageIndex(pageIndex - 1)}
+              >
+                {"<"}
+              </a>
+            </li>
+          </>
         )}
 
         {pagelist.map((page) => page)}
         {pageIndex < loop && (
-          <li className="page-item">
-            <a
-              className="page-link"
-              onClick={(e) => setPageIndex(pageIndex + 1)}
-            >
-              Next
-            </a>
-          </li>
+          <>
+            <li className="page-item">
+              <a
+                className="page-link"
+                onClick={(e) => setPageIndex(pageIndex + 1)}
+              >
+                {">"}
+              </a>
+            </li>
+            <li className="page-item">
+              <a
+                className="page-link"
+                onClick={(e) => setPageIndex(loop)}
+              >
+                {">>"}
+              </a>
+            </li>
+          </>
         )}
       </ul>
     );
