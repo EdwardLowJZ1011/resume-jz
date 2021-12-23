@@ -3,6 +3,7 @@ import "./mycert.css";
 import Rating from "../utilities/Rating";
 import { StoreContext } from "../store";
 
+
 function importAll(r) {
   let images = {};
   r.keys().forEach((item, index) => {
@@ -166,7 +167,7 @@ function MyCert() {
               <header className="border-bottom mb-4 pb-3">
                 <div className="form-inline">
                   <span className="mr-md-auto">
-                    <h2 class="heading-text">
+                    <h2 className="heading-text">
                       {certificateDetails.length} Certificates
                       {" (Edward Low Jin Zhang)"}
                     </h2>
@@ -174,6 +175,7 @@ function MyCert() {
                 </div>
                 <div className="cert-filter">
                   <span className="filter-title">Issue Date:  </span>
+        
                   <i
                     className={
                       sortByValue

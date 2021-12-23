@@ -220,11 +220,17 @@ a.link-text:hover, a.link-text:active{
   @media only screen and (max-width: 1023px) {
     .resume-content {
       display: flex;
-      margin-left: 65px;
+      padding-left: 20%;
+      /* margin-left: 20%; */
       flex-direction: column;
       align-items: center;
+      min-width: 95%;
     }
     
+    .resume-bullets-details{
+      padding-left:20%;
+    }
+
     .bullets {
       width: 90%;
     }
@@ -271,4 +277,34 @@ a.link-text:hover, a.link-text:active{
     }
   }
   
+  @media only screen and (min-width: 80px) and (max-width: 700px) {
+    .resume-content {
+      display: flex;
+      min-width: 20%;
+      margin-left: 15%;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+    .resume-screen-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: auto;
+      left: 2px;
+      width: 55%;
+      font-size: 8px;
+    }
+
+    .show-more-btn{
+      width: 100%;
+      padding: 10px;
+      margin-left: 20%;
+      height: 80px;
+      font-size: 10px;
+    }
+    
+  }
+
 
