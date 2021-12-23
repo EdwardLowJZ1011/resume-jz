@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import "./mycert.css";
 import Rating from "../utilities/Rating";
 import { StoreContext } from "../store";
-
+import '../assets/css/modal.css';
 
 function importAll(r) {
   let images = {};
@@ -34,7 +34,8 @@ function MyCert() {
 
   const [pageNo, setPageNo] = useState(5);
   const [pageIndex, setPageIndex] = useState(1);
-
+  const [imgModal, setImgModal] = useState({ display: "none" });
+  console.log(imgModal);
   const pageHandle = () => {
     var x = document.getElementById("pages").value;
     setPageNo(parseInt(x));
@@ -47,7 +48,7 @@ function MyCert() {
 
   const paginaton = () => {
     var loop = Math.ceil(certificateDetails.length / pageNo);
-    // var endIdx = loop - pageIndex > 8 ? 8 : loop 
+    // var endIdx = loop - pageIndex > 8 ? 8 : loop
     var pagelist = [];
 
     pageIndex > loop && setPageIndex(loop);
@@ -73,8 +74,7 @@ function MyCert() {
           </a>
         </li>
       );
-      if (pagelist.length >= 8)
-        break
+      if (pagelist.length >= 8) break;
     }
     return (
       <ul className="pagination">
@@ -109,19 +109,28 @@ function MyCert() {
       <article className="card card-product-list" key={certifcate.alias}>
         <div className="row no-gutters">
           <aside className="col-md-3">
-            <a href={certifcate.source} target="_blank" className="img-wrap">
-              {/* <span className="badge badge-danger"> NEW </span> */}
-              <img
-                src={
-                  images[certifcate.alias] && images[certifcate.alias].default
-                }
-                className="cert_pic"
-              />
-            </a>
+            {/* <a href={certifcate.source} target="_blank" className="img-wrap"> */}
+            {/* <span className="badge badge-danger"> NEW </span> */}
+            <img
+              src={images[certifcate.alias] && images[certifcate.alias].default}
+              className="cert_pic"
+              onClick={(e) =>
+                setImgModal({
+                  display: "block",
+                  source: images[certifcate.alias].default,
+                  name: certifcate.alias,
+                })
+              }
+            />
+            {/* </a> */}
           </aside>
           <div className="col-md-6">
             <div className="info-main">
-              <a href={certifcate.source} target="_blank" className="link-title">
+              <a
+                href={certifcate.source}
+                target="_blank"
+                className="link-title"
+              >
                 {certifcate.title}
               </a>
               <div className="cert-company">
@@ -134,7 +143,10 @@ function MyCert() {
               </div>
               <div>
                 <p>
-                  <span className="cert-title">Technologies Learned: {certifcate.technology && certifcate.technology}</span> 
+                  <span className="cert-title">
+                    Technologies Learned:{" "}
+                    {certifcate.technology && certifcate.technology}
+                  </span>
                 </p>
               </div>
             </div>
@@ -162,6 +174,26 @@ function MyCert() {
 
   return (
     <div>
+      {imgModal && (
+        <div
+          id="modalImg"
+          className="modal"
+          style={{ display: imgModal.display }}
+        >
+          <span
+            className="close"
+            onClick={(e) => setImgModal({ display: "none" })}
+          >
+            &times;
+          </span>
+          <img
+            className="modal-content"
+            src={imgModal.source}
+            alt={imgModal.name}
+          />
+          <div id="caption"></div>
+        </div>
+      )}
       <section className="section-content padding-y">
         <div className="container">
           <div className="row">
@@ -176,8 +208,8 @@ function MyCert() {
                   </span>
                 </div>
                 <div className="cert-filter">
-                  <span className="filter-title">Issue Date:  </span>
-        
+                  <span className="filter-title">Issue Date: </span>
+
                   <i
                     className={
                       sortByValue
@@ -201,9 +233,7 @@ function MyCert() {
                     <option value="5" default>
                       5
                     </option>
-                    <option value="10">
-                      10
-                    </option>
+                    <option value="10">10</option>
                     <option value="15">15</option>
                     <option value="20">20</option>
                     <option value="50">50</option>
