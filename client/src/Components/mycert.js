@@ -132,7 +132,7 @@ function MyCert() {
               </div>
               <div>
                 <p>
-                  <span className="cert-title">Technologies Learned: </span>
+                  <span className="cert-title">Technologies Learned: {certifcate.technology && certifcate.technology}</span> 
                 </p>
               </div>
             </div>
