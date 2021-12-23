@@ -32,7 +32,7 @@ function MyCert() {
         return a.issueDate.localeCompare(b.issueDate);
       });
 
-  const [pageNo, setPageNo] = useState(10);
+  const [pageNo, setPageNo] = useState(5);
   const [pageIndex, setPageIndex] = useState(1);
 
   const pageHandle = () => {
@@ -47,12 +47,12 @@ function MyCert() {
 
   const paginaton = () => {
     var loop = Math.ceil(certificateDetails.length / pageNo);
-
+    // var endIdx = loop - pageIndex > 8 ? 8 : loop 
     var pagelist = [];
 
     pageIndex > loop && setPageIndex(loop);
 
-    for (var i = 0; i < loop; i++) {
+    for (var i = pageIndex - 5 < 0 ? 0 : pageIndex - 5; i < loop; i++) {
       var classes =
         pageIndex === 1
           ? i === 0
@@ -73,6 +73,8 @@ function MyCert() {
           </a>
         </li>
       );
+      if (pagelist.length >= 8)
+        break
     }
     return (
       <ul className="pagination">
@@ -196,7 +198,10 @@ function MyCert() {
                     id="pages"
                     onChange={pageHandle}
                   >
-                    <option value="10" default>
+                    <option value="5" default>
+                      5
+                    </option>
+                    <option value="10">
                       10
                     </option>
                     <option value="15">15</option>
