@@ -18,10 +18,9 @@ const LoginScreen = ({history}) =>{
 
   useEffect(() => {
     if (cookies.utoken) {
-      console.log(uuser.token)
       navigate('/')
     }
-  }, [])
+  }, [cookies, uuser])
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -30,8 +29,8 @@ const LoginScreen = ({history}) =>{
 
     if (status == 200){
       setUser(data);
-      setCookie("utoken", data.token, {expires: 1, maxAge: 3600});
-      // navigate('/')
+      setCookie("utoken", data.token, {maxAge: 3600});
+      navigate('/')
     }
   };
 
