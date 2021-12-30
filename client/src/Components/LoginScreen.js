@@ -24,14 +24,19 @@ const LoginScreen = ({history}) =>{
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const resp = await axios.post('/api/users/login', {email, password})
-    const {status,data} = resp
-
-    if (status == 200){
-      setUser(data);
-      setCookie("utoken", data.token, {maxAge: 3600});
-      navigate('/')
+    try{
+      const resp = await axios.post('/api/users/login', {email, password})
+      const {status,data} = resp
+  
+      if (status == 200){
+        setUser(data);
+        setCookie("utoken", data.token, {maxAge: 3600});
+        navigate('/')
+      }
     }
+    catch{
+    };
+    
   };
 
   return (
