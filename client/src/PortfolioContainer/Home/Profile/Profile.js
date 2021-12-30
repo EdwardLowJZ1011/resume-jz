@@ -2,10 +2,14 @@ import React, { useContext } from "react";
 import Typical from "react-typical";
 import "./Profile.css";
 import { StoreContext } from "../../../store";
+import { useCookies } from "react-cookie";
+import { saveFile } from "../../../utilities/ResumeDownload";
 
 export default function Profile() {
   const { lang } = useContext(StoreContext);
   const language = lang[0];
+  const [cookies] = useCookies(["user"]);
+
 
   const roles = {
     EN: [
@@ -34,6 +38,17 @@ export default function Profile() {
     ],
   };
 
+  const getResume = {
+    EN: {
+      contact:"Contact Me",
+      download:"Get Resume"
+    },
+    CN:{
+      contact:"联系",
+      download:"简历"
+    }
+  }
+  console.log(cookies)
   return (
     <div className="profile-container">
       <div className="profile-parent">
@@ -84,21 +99,13 @@ export default function Profile() {
               )}
             </span>
           </div>
-          {language == "EN" ? (
           <div>
-            <button className="btn primary-btn">Contact Me</button>
-            <a href="" download="Edward Low Resume.pdf">
-              <button className="btn highlighted-btn" disabled> Get Resume</button>
-            </a>
+            <button className="btn primary-btn"><a style={{color: "white", textDecoration: "none"}} href='#ContactMe'>{getResume && getResume[language].contact}</a></button>
+            {/* <a href={cookies.token && pdf} download="Edward Low.pdf"> */
+            }
+              {cookies.utoken ? <button className="btn highlighted-btn" onClick={e=>saveFile()}>{getResume[language].download }</button>: <button className="btn highlighted-btn" disabled>{getResume[language].download}</button>}
+            {/* </a> */}
           </div>
-          ): (
-          <div>
-            <button className="btn primary-btn">联系</button>
-            <a href="" download="Edward Low Resume.pdf">
-              <button className="btn highlighted-btn" disabled> 简历</button>
-            </a>
-          </div>
-          )}
         </div>
         <div className="profile-picture">
           <div className="profile-picture-background"></div>

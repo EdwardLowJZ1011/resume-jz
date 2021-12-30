@@ -4,6 +4,8 @@ import ScreenHeading from "../../utilities/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utilities/ScrollService";
 import "./AboutMe.css";
 import { StoreContext } from "../../../src/store";
+import { useCookies } from "react-cookie";
+import { saveFile } from "../../utilities/ResumeDownload";
 
 export default function AboutMe(props) {
   let fadeInScreenHandler = (screen) => {
@@ -15,7 +17,7 @@ export default function AboutMe(props) {
 
   const { lang } = useContext(StoreContext);
   const language = lang[0];
-
+  const [cookies] = useCookies(["user"]);
   const SCREEN_CONSTANTS = {
     EN: {
       description:
@@ -73,17 +75,47 @@ export default function AboutMe(props) {
               {renderHighlight()}
               {language == "EN" ? (
                 <div className="about-me-options">
-                  <button className="btn primary-btn">Contact Me</button>
-                  <a href="" download="Edward Low Resume.pdf">
-                    <button className="btn highlighted-btn" disabled> Get Resume</button>
-                  </a>
+                  <button className="btn primary-btn">
+                    <a
+                      style={{ color: "white", textDecoration: "none" }}
+                      href="#ContactMe"
+                    >
+                      Contact Me
+                    </a>
+                  </button>
+                  
+                    {cookies.utoken ? (
+                      <button className="btn highlighted-btn"  onClick={e=>saveFile()}>
+                        {" "}
+                        Get Resume
+                      </button>
+                    ) : (
+                      <button className="btn highlighted-btn" disabled>
+                        {" "}
+                        Get Resume
+                      </button>
+                    )}
+      
                 </div>
               ) : (
                 <div className="about-me-options">
-                  <button className="btn primary-btn">联系</button>
-                  <a href="" download="Edward Low Resume.pdf">
-                    <button className="btn highlighted-btn" disabled> 简历</button>
-                  </a>
+                  <button className="btn primary-btn">
+                    <a
+                      style={{ color: "white", textDecoration: "none" }}
+                      href="#ContactMe"
+                    >
+                      联系
+                    </a>
+                  </button>
+                    {cookies.utoken ? (
+                      <button className="btn highlighted-btn"  onClick={e=>saveFile()}> 简历</button>
+                    ) : (
+                      <button className="btn highlighted-btn" disabled>
+                        {" "}
+                        简历
+                      </button>
+                    )}
+      
                 </div>
               )}
             </div>

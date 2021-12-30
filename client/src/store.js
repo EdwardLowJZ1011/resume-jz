@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 export const StoreContext = React.createContext(null);
 
+
+
 export default ({ children }) => {
   const [language, setLanguage] = useState("EN");
+  
   const certificateDetails = [
     {
       title: "Next.JS with Sanity CMS - Serverless Blog App (w/ Vercel)",
@@ -694,9 +697,12 @@ export default ({ children }) => {
   ];
   const [certificates, setCertificates] = useState(certificateDetails);
 
+  const [uuser, setUser] = useState({})
+
   const store = {
     lang: [language, setLanguage],
     cert: [certificates, setCertificates],
+    user: [uuser, setUser],
   };
 
   return (

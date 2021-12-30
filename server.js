@@ -3,13 +3,17 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const contactRoute = require("./route/contactRoute");
+const userRoutes = require("./route/userRoutes");
+const connectDB = require("./connectDB");
 
 const app = express();
 
+connectDB();
 app.use(express.json());
 app.use(cors());
 
 app.use("/", contactRoute);
+app.use('/api/users', userRoutes)
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

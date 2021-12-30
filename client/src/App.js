@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import PortfolioContainer from "./PortfolioContainer/PortfolioContainer";
 import MyCert from "./Components/mycert";
+import Login from "./Components/LoginScreen.js";
 
 import { library, config } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -11,7 +12,7 @@ import {
 config.autoAddCss = false;
 library.add(
   faSortNumericDown,
-  faSortNumericUp);
+  faSortNumericUp); 
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={< PortfolioContainer />}></Route>
           <Route exact path='/mycertificate' element={< MyCert />}></Route>
+          <Route exact path='/login' element={< Login />}></Route>
         </Routes>
       </div>
     </Router>
