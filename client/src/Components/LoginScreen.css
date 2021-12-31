@@ -43,6 +43,18 @@ img.avatar {
   padding: 16px;
 }
 
+.otpHeader{
+  margin-left: 25%;
+}
+
+.otpBody{
+  margin-left: 32%;
+}
+
+.otpFooter{
+  margin-left: 42%;
+}
+
 span.psw {
   float: right;
   padding-top: 16px;
