@@ -55,7 +55,7 @@ export default function Profile() {
         <div className="profile-details">
           <div className="colz">
             <div className="colz-icon">
-              <a href="#">
+              {/* <a href="#">
                 <i className="fa fa-facebook-square"></i>
               </a>
               <a href="#">
@@ -69,7 +69,7 @@ export default function Profile() {
               </a>
               <a href="#">
                 <i className="fa fa-twitter"></i>
-              </a>
+              </a> */}
             </div>
           </div>
           <div className="profile-details-name">
