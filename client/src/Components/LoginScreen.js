@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import LoginContainer from "./LoginContainer";
 import img from "../assets/Home/resume_photo.jpg";
+import { rsa } from "./rsa";
 
 const LoginScreen = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -15,12 +16,21 @@ const LoginScreen = ({ history }) => {
   const setUser = user[1];
 
   const navigate = useNavigate();
-  useEffect(() => {
-    // if (cookies.utoken & cookies.otp == false) 
-    //   navigate("/otp");
-    // else if (cookies.utoken & cookies.otp == true)
-    //   navigate("/");
-    
+  useEffect(async() => {
+    const rsaToken = await rsa();
+    await setCookie("rsa", rsaToken, { maxAge: 3600 });
+
+    if (cookies.rsa == "true")
+      navigate("/");
+    else{
+      if (cookies.utoken=="true" & !(cookies.otp)) 
+        navigate("/otp");
+      else if (cookies.utoken=="true" & cookies.otp == "true"){
+        setCookie("rsa", true, { maxAge: 3600 });
+        navigate("/");
+      }
+
+    }
   }, [cookies, uuser]);
 
   const submitHandler = async (e) => {
@@ -33,6 +43,7 @@ const LoginScreen = ({ history }) => {
         setUser(data);
         setCookie("utoken", data.success, { maxAge: 3600 });
         setCookie("utokenContent", data.token, { maxAge: 3600 });
+        setCookie("loginTimestamp", data.loginTimestamp, { maxAge: 3600 });
         navigate("/otp");
       }
     } catch {}

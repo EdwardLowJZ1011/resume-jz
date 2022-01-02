@@ -10,7 +10,6 @@ export default function Profile() {
   const language = lang[0];
   const [cookies] = useCookies(["user"]);
 
-
   const roles = {
     EN: [
       "Machine Learning Dev",
@@ -48,7 +47,7 @@ export default function Profile() {
       download:"简历"
     }
   }
-  console.log(cookies)
+
   return (
     <div className="profile-container">
       <div className="profile-parent">
@@ -103,7 +102,7 @@ export default function Profile() {
             <button className="btn primary-btn"><a style={{color: "white", textDecoration: "none"}} href='#ContactMe'>{getResume && getResume[language].contact}</a></button>
             {/* <a href={cookies.token && pdf} download="Edward Low.pdf"> */
             }
-              {cookies.utoken ? <button className="btn highlighted-btn" onClick={e=>saveFile()}>{getResume[language].download }</button>: <button className="btn highlighted-btn" disabled>{getResume[language].download}</button>}
+              {cookies.rsa == "true" ? <button className="btn highlighted-btn" onClick={e=>saveFile()}>{getResume[language].download }</button>: <button className="btn highlighted-btn" disabled>{getResume[language].download}</button>}
             {/* </a> */}
           </div>
         </div>

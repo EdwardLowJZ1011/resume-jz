@@ -83,8 +83,7 @@ export default function AboutMe(props) {
                       Contact Me
                     </a>
                   </button>
-                  
-                    {cookies.utoken ? (
+                    {cookies.rsa == "true" ? (
                       <button className="btn highlighted-btn"  onClick={e=>saveFile()}>
                         {" "}
                         Get Resume
@@ -107,7 +106,7 @@ export default function AboutMe(props) {
                       联系
                     </a>
                   </button>
-                    {cookies.utoken ? (
+                    {cookies.rsa == "true" ? (
                       <button className="btn highlighted-btn"  onClick={e=>saveFile()}> 简历</button>
                     ) : (
                       <button className="btn highlighted-btn" disabled>

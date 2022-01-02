@@ -27,7 +27,6 @@ export default function Header() {
   const language = lang[0];
   const setLanguage = lang[1];
 
-  console.log(lang);
   const updateCurrentScreen = (currentScreen) => {
     if (!currentScreen || currentScreen.screenInView) return;
     let screenIndex = GET_SCREEN_INDEX(currentScreen.screenInView);

@@ -48,7 +48,7 @@ img.avatar {
 }
 
 .otpBody{
-  margin-left: 32%;
+  margin-left: 30%;
 }
 
 .otpFooter{
@@ -60,13 +60,34 @@ span.psw {
   padding-top: 16px;
 }
 
+
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 700px) {
+
   span.psw {
      display: block;
      float: none;
   }
   .cancelbtn {
      width: 100%;
+  }
+
+  .otpHeader{
+    margin-left:5%;
+    width: 80%;
+    text-align: center;
+  }
+  
+  .otpBody{
+    margin-left: -1%;
+    width: 50%;
+  }
+  
+  .otpBody input{
+    width: 50%;
+  }
+
+  .otpFooter{
+    margin-left: 30%;
   }
 }

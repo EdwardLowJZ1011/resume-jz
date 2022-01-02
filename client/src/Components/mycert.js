@@ -35,7 +35,7 @@ function MyCert() {
   const [pageNo, setPageNo] = useState(5);
   const [pageIndex, setPageIndex] = useState(1);
   const [imgModal, setImgModal] = useState({ display: "none" });
-  console.log(imgModal);
+ 
   const pageHandle = () => {
     var x = document.getElementById("pages").value;
     setPageNo(parseInt(x));

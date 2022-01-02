@@ -203,7 +203,6 @@ a.link-text:hover, a.link-text:active{
     font-size: 16px;
     color: #ff5823;
   }
-
   
 /* IPAD PRO RESPONSIVENESS */
 @media only screen and (max-width: 1110px) {
