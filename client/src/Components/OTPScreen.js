@@ -105,7 +105,6 @@ const OTPScreen = ({ history }) => {
               </i>
             </h5>
           </div>
-          {console.log(window.innerHeight)}
           <div className="otpBody">
             <OtpInput
               value={OTP}
