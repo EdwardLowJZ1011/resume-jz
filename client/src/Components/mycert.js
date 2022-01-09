@@ -14,7 +14,7 @@ function importAll(r) {
 
 function MyCert() {
   const images = importAll(
-    require.context("../assets/Certificates", false, /\.(png|jpe?g|svg)$/)
+    require.context("../assets/Certificates", false, /\.(PNG|png|jpe?g|svg)$/)
   );
   // console.log(images);
   const { cert } = useContext(StoreContext);

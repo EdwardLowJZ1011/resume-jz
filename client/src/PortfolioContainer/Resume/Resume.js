@@ -97,7 +97,7 @@ export default function Resume(props) {
       title: "System Expert",
       href: "https://certificate.algoexpert.io/SystemsExpert%20Certificate%20SE-51843be914",
       description: "Understand the system design and methodology.",
-    },
+    }
   ];
 
   const projectDetails =

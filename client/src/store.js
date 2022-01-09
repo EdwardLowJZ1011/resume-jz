@@ -7,13 +7,25 @@ export default ({ children }) => {
 
   const certificateDetails = [
     {
+      title: "Twilio Video - Create Zoom Clone Video Conference App",
+      company: "Udemy",
+      alias: "Twilio Video - Create Zoom Clone Video Conference App.PNG",
+      source:
+        "https://www.udemy.com/certificate/UC-4ff6fbff-bd45-4da0-b564-7ddaf0cc7969/",
+      issueDate: "2022-01-09",
+      description:
+        "To establish connection with other users and exchange with them media, we will use Twilio Programmable Video. That solution is based on WebRTC and media servers. For creating client side UI we will go for React which is most popular library to creating front-end in JavaScript. Also we will connect with serverless functions which we will host on Twilio Platform. Our created rooms will be able to handle even 50 participants connected to the same room.",
+      technology: "React.js, Twilio, Javascript",
+      rating: 3.5,
+    },
+    {
       title: "Next.JS with Sanity CMS - Serverless Blog App (w/ Vercel)",
       company: "Udemy",
       alias: "Sanity CMS - Serverless Blog App.jpg",
       source:
         "https://www.udemy.com/certificate/UC-58c02c24-103a-4800-84b8-151d37f1c6e5/",
       issueDate: "2021-12-15",
-      description:
+      descriptin:
         "Use sanity template to develop personal blog easily, next.js develop single-page web and deploy the web application on vercel platform.",
       technology: "Next.js,Sanity.io, Javascript",
       rating: 5,
