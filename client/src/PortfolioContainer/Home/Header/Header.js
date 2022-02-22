@@ -13,9 +13,9 @@ import myFlag from "../../../assets/flag/my.svg";
 import { StoreContext } from "../../../store";
 
 const SCREEN = {
-  'EN': {"Home": "Home", "About Me": "About Me", "Resume":"Resume", 
+  'EN': {"Home": "Home", "About Me": "About Me", "Resume":"Resume", "Medium": "Medium",
         "Testimonial": "Testimonial", "ContactMe": "ContactMe"},
-  'CN': {"Home": "主页", "About Me": "关于我", "Resume":"简历", 
+  'CN': {"Home": "主页", "About Me": "关于我", "Resume":"简历", "Medium": "Medium 博客",
         "Testimonial": "推荐", "ContactMe": "联系我"
   },
 }
