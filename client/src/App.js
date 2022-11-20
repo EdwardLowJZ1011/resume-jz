@@ -9,6 +9,7 @@ import {
   faSortNumericDown,
   faSortNumericUp } from '@fortawesome/free-solid-svg-icons';
 import OTPScreen from "./Components/OTPScreen";
+// import MyLinkedin from "./Components/Linkedin";
 
 config.autoAddCss = false;
 library.add(
@@ -25,6 +26,7 @@ function App() {
           <Route exact path='/mycertificate' element={< MyCert />}></Route>
           <Route exact path='/login' element={< Login />}></Route>
           <Route exact path='/otp' element={< OTPScreen />}></Route>
+          {/* <Route exact path='/linkedin' element={< MyLinkedin />}></Route> */}
         </Routes>
       </div>
     </Router>
