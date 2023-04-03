@@ -1,0 +1,309 @@
+.resume-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: fit-content;
+    margin: 120px 0;
+}
+
+.resume-card{
+    display: flex;
+    height: 360px;
+    width: 1000px;
+}
+
+.resume-bullets{
+    height: 100%;
+    box-shadow: 15px 0 9px -15px #1f2235;
+    width: 320px;
+}
+
+.resume-bullets-details{
+    flex-grow: 1;
+    width: 600px;
+    overflow: hidden;
+    padding: 0 0 0 70px;
+}
+
+.experience-description{
+    margin: 10px 0 0 0;
+    text-align: justify;
+    max-width: 100%;
+}
+
+.resume-details-carousal{
+    transition: transform 1s ease-out;
+}
+
+.bullet-container{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.bullets{
+    width: 80%;
+    position: relative;
+    z-index: 2;
+}
+
+.bullet{
+    display: flex;
+    align-items: center;
+    background-color: #1f2235;
+    height: 40px;
+    margin: 15px;
+    padding: 0 8px;
+    border-radius: 20px;
+    width: 30px;
+    transition: width 0.6s ease;
+    cursor: pointer;
+}
+.bullet-label{
+    font-size: 14px;
+    white-space: nowrap;
+    font-family: "Poppins SemiBold";
+}
+
+.bullet-logo{
+    height: 16px;
+    margin: 0 30px 0 0;
+}
+
+.bullet-icons{
+    width: 34px;
+    height: 100%;
+    z-index: 1;
+    background-color: #1f2235;
+    position: absolute;
+}
+
+.selected-bullet{
+    color: white;
+    width: 100%;
+}
+
+.resume-screen-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 360px;
+    width: 100%;
+}
+
+.resume-heading{
+    display: flex;
+    flex-direction: column;
+}
+
+.show-more-btn{
+  width: 100%;
+  padding: 5px;
+  margin-left: 73%;
+  height: 80px;
+}
+
+div.show-more-btn a.link-button:link, a.link-button:visited {
+  background-color: #ff5823;
+  color: white;
+  padding: 7px;
+  text-align: center;
+  min-width: 120px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 14px;
+}
+
+div.show-more-btn a.link-button:hover, a.link-button:active {
+  background-color: #ff5823;
+}
+
+a.link-text:link, a.link-text:visited{
+  color:black;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a.link-text:hover, a.link-text:active{
+  color: navy;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.resume-main-heading{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.heading-bullet{
+    position: absolute;
+    left: -30px;
+    height: 15px;
+    width: 15px;
+    top: 5px;
+    background-color: var(--dark-orange);
+    border-radius: 50%;
+}
+
+.resume-sub-heading {
+    font-size: 14px;
+    font-family: "Poppins SemiBold";
+    color: var(--black);
+    margin: 10px 0 0 0;
+  }
+  
+  .resume-heading-description {
+    font-size: 12px;
+    text-align: justify;
+  }
+  
+  .heading-date {
+    background-color: #ff5823;
+    padding: 4px 12px;
+    font-size: 14px;
+    border-radius: 14px;
+    color: var(--white);
+  }
+  .skill-parent {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 50%;
+  }
+  
+  .programming-skills-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .skill-percentage {
+    position: relative;
+    height: 15px;
+    width: 70%;
+    background-color: #ff5823;
+  }
+  
+  .skill-percentage .active-percentage-bar {
+    height: 15px;
+    transition: 0.8s ease;
+    position: absolute;
+    background-color: #1f2235;
+  }
+
+  .skill-parent span {
+    font-family: "Poppins Bold";
+    font-size: 16px;
+    color: #ff5823;
+  }
+  
+/* IPAD PRO RESPONSIVENESS */
+@media only screen and (max-width: 1110px) {
+    .resume-card {
+      width: 880px;
+    }
+  
+    .resume-bullet-details {
+      padding: 0 0 0 70px;
+    }
+  }
+  
+  /* IPAD RESPONSIVENESS */
+  @media only screen and (max-width: 1023px) {
+    .resume-content {
+      display: flex;
+      padding-left: 20%;
+      /* margin-left: 20%; */
+      flex-direction: column;
+      align-items: center;
+      min-width: 95%;
+    }
+    
+    .resume-bullets-details{
+      padding-left:20%;
+    }
+
+    .bullets {
+      width: 90%;
+    }
+
+    .resume-description-text{
+      width: 75%;
+    }
+
+    .resume-screen-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: auto;
+      left: 2px;
+      width: 70%;
+    }
+    
+    .resume-card {
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      margin: 30px 0;
+      align-items: center;
+      width: 80%;
+    }
+  
+    .resume-bullet-details {
+      height: 360px;
+      padding: 0;
+      width: fit-content;
+    }
+  
+    .resume-bullets {
+      margin: 30px 0;
+      width: 100%;
+    }
+  
+    .selected-bullet {
+      width: 100%;
+    }
+    
+    .resume-heading{
+      flex-direction: column;
+    }
+  }
+  
+  @media only screen and (min-width: 80px) and (max-width: 700px) {
+    .resume-content {
+      display: flex;
+      min-width: 20%;
+      margin-left: 15%;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+    .resume-screen-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: auto;
+      left: 2px;
+      width: 55%;
+      font-size: 8px;
+    }
+
+    .show-more-btn{
+      width: 100%;
+      padding: 10px;
+      margin-left: 20%;
+      height: 80px;
+      font-size: 10px;
+    }
+    
+  }
+
+
