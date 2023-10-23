@@ -388,7 +388,7 @@ export default function Resume(props) {
             <div class="show-more-btn">
               <a
                 class="link-button"
-                href='/mycertificate'
+                href='/mycert'
                 target="_blank"
               >
                 &#10097;&#10097;&#10097;更多 ({certTotal})
