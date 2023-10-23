@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const contactRoute = require("./route/contactRoute");
+const firebaseRoute = require("./route/firebaseConnector");
 const userRoutes = require("./route/userRoutes");
 const connectDB = require("./connectDB");
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", contactRoute);
+app.use("/api/firebase", firebaseRoute);
 app.use('/api/users', userRoutes)
 
 if (process.env.NODE_ENV === "production") {
@@ -22,5 +24,5 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
-const port = process.env.PORT || 5000;
-app.listen(port, console.log(`server listing to port 5000 only`));
+const port = process.env.PORT || 5050;
+app.listen(port, console.log(`server listing to port 5050 only`));

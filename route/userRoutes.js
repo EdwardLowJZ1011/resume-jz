@@ -1,6 +1,6 @@
 const express = require("express");
 const User = require("./models/userModels");
-const firedatabase = require("./utils/firebase");
+const {firedatabase} = require("./utils/firebase");
 const generateToken = require("./utils/generateToken.js");
 const otpGenerator = require("otp-generator");
 const router = express.Router();
@@ -166,6 +166,7 @@ router.post("/rsa", async (req, res) => {
         res.status(200).json({ success: false, error: "RSA is not activate" });
     });
 });
+
 
 router.post("/getOTPDetail", async (req, res) => {
   await firedatabase

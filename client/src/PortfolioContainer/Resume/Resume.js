@@ -5,11 +5,21 @@ import ScrollService from "../../utilities/ScrollService";
 import Animations from "../../utilities/Animations";
 import "./Resume.css";
 import { StoreContext } from "../../../src/store";
+import {getTotalCertificates} from '../../Components/mycert'
 
 export default function Resume(props) {
   const { lang, cert } = useContext(StoreContext);
   const language = lang[0];
-  const certno = cert[0];
+  // const certno = cert[0];
+
+  const [certTotal, setCertTotal] = useState(0);
+
+  useEffect(async()=>{
+   
+    let totalCert = await getTotalCertificates();
+    setCertTotal(totalCert['data']);
+   
+}, []);
 
   const ResumeHeading = (props) => {
     return (
@@ -256,10 +266,10 @@ export default function Resume(props) {
               <div class="show-more-btn">
                 <a
                   class="link-button"
-                  href='/mycertificate'
+                  href='/mycert'
                   target="_blank"
                 >
-                  &#10097;&#10097;&#10097;Show More ({certno.length})
+                  &#10097;&#10097;&#10097;Show More ({certTotal})
                 </a>
               </div>
           </div>,
@@ -381,7 +391,7 @@ export default function Resume(props) {
                 href='/mycertificate'
                 target="_blank"
               >
-                &#10097;&#10097;&#10097;更多 ({certno.length})
+                &#10097;&#10097;&#10097;更多 ({certTotal})
               </a>
             </div>
           </div>,

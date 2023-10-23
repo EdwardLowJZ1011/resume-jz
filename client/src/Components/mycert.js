@@ -1,28 +1,91 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect} from "react";
+import Select, {StylesConfig} from 'react-select';
 import "./mycert.css";
 import Rating from "../utilities/Rating";
 import { StoreContext } from "../store";
 import "../assets/css/modal.css";
+import axios from "axios";
 
-function importAll(r) {
-  let images = {};
-  r.keys().forEach((item, index) => {
-    images[item.replace("./", "")] = r(item);
-  });
-  return images;
+// function importAll(r) {
+//   let images = {};
+//   r.keys().forEach((item, index) => {
+//     images[item.replace("./", "")] = r(item);
+//   });
+//   return images;
+// }
+
+export async function getCertifcatePics(lang) {
+  const resp = await axios.post('/api/firebase/getCertPics', {});
+  const { status, data } = resp;
+  if (status == 200) {
+    return data;
+  }
+
+  return false;
+}
+
+export async function getTechnologiesSkill(lang) {
+  const resp = await axios.post('/api/firebase/getTechnologies', {lang: lang ? lang.toLowerCase() : 'en'});
+  const { status, data } = resp;
+  if (status == 200) {
+    return data;
+  }
+
+  return false;
+}
+
+export async function getCertifcates(lang) {
+  lang = lang ? lang : 'EN';
+  const resp = await axios.post('/api/firebase/getCertificateInfos', {lang: lang.toLowerCase()});
+  const { status, data } = resp;
+  if (status == 200) {
+    return data;
+  }
+
+  return false;
+}
+
+export async function getTotalCertificates(lang) {
+  const resp = await axios.post('/api/firebase/getCertTotal', {lang: lang ? lang.toLowerCase() : 'en'});
+  const { status, data } = resp;
+  if (status == 200) {
+    return data;
+  }
+
+  return false;
+}
+
+function filterCerts(certificateDetails, selectValue){
+  let data =  certificateDetails && selectValue.length > 0 ? certificateDetails.filter(obj => { 
+    for(var i =0; i < selectValue.length; i++){
+        if (obj['technology'].includes(selectValue[i]))
+           return selectValue[i]
+  }}) : certificateDetails;
+  return data;
+
 }
 
 function MyCert() {
-  const images = importAll(
-    require.context("../assets/Certificates", false, /\.(PNG|png|jpe?g|svg)$/)
-  );
+  // const images = importAll(
+  //   require.context("../assets/Certificates", false, /\.(PNG|png|jpe?g|svg)$/)
+  // );
   // console.log(images);
-  const { cert } = useContext(StoreContext);
+  // const { cert } = useContext(StoreContext);
+  const { lang } = useContext(StoreContext);
 
-  const certificateDetails = cert[0];
+  // const certificateDetails = cert[0];
   const [sortByValue, setSortByValue] = useState(true);
+  const [selectedValue, setSelectedValue] = useState([]);
+  const [certificateDetails, setCertificateDetails] = useState([]);
 
-  sortByValue
+  // const [certificateClone, setCertificateClone] = useState([]);
+
+  // handle onChange event of the dropdown
+  const handleChange = (e) => {
+    setSelectedValue(Array.isArray(e) ? e.map(x => x.value) : []);
+  }
+
+ certificateDetails && sortByValue
     ? certificateDetails
         .sort(function (a, b) {
           return a.issueDate.localeCompare(b.issueDate);
@@ -35,7 +98,10 @@ function MyCert() {
   const [pageNo, setPageNo] = useState(5);
   const [pageIndex, setPageIndex] = useState(1);
   const [imgModal, setImgModal] = useState({ display: "none" });
- 
+  const [images, setImages] = useState([]);
+  const [tech, setTech] = useState([]);
+  const [certTotal, setCertTotal] = useState(0);
+
   const pageHandle = () => {
     var x = document.getElementById("pages").value;
     setPageNo(parseInt(x));
@@ -46,13 +112,34 @@ function MyCert() {
     setPageIndex(parseInt(x));
   };
 
+  useEffect(async()=>{
+      setPageIndex(pageIndex == 0 ? 1 : pageIndex);
+      console.log(pageIndex)
+      let imagesData =  await getCertifcatePics();
+      setImages(imagesData['data']);
+      let techData = await getTechnologiesSkill();
+      setTech(techData['data']);
+      let certificateDetail_ = await getCertifcates(lang[0]);
+      console.log(certificateDetail_['data'])
+
+      setCertificateDetails(certificateDetail_['data']);
+      let totalCert = await getTotalCertificates();
+      setCertTotal(totalCert['data']);
+      
+      if (selectedValue.length > 0){
+        let data = await filterCerts(certificateDetails, selectedValue);
+        setCertificateDetails(data);
+      }
+
+  }, [pageIndex, selectedValue]);
+
   const paginaton = () => {
     var loop = Math.ceil(certificateDetails.length / pageNo);
     // var endIdx = loop - pageIndex > 8 ? 8 : loop
     var pagelist = [];
-
-    pageIndex > loop && setPageIndex(loop);
-
+    console.log(loop)
+    // pageIndex > loop && setPageIndex(loop);
+    
     for (var i = pageIndex - 3 < 0 ? 0 : pageIndex - 3; i < loop; i++) {
       var classes =
         pageIndex === 1
@@ -76,6 +163,7 @@ function MyCert() {
       );
       if (pagelist.length >= 5) break;
     }
+    console.log(pageIndex)
     return (
       <ul className="pagination">
         {pageIndex > 1 && (
@@ -121,7 +209,9 @@ function MyCert() {
     );
   };
 
+
   const certificateCard = (certifcate) => {
+   
     return (
       <article className="card card-product-list" key={certifcate.alias}>
         <div className="row no-gutters">
@@ -129,12 +219,12 @@ function MyCert() {
             {/* <a href={certifcate.source} target="_blank" className="img-wrap"> */}
             {/* <span className="badge badge-danger"> NEW </span> */}
             <img
-              src={images[certifcate.alias] && images[certifcate.alias].default}
+              src={ images && images[certifcate.alias]}
               className="cert_pic"
               onClick={(e) =>
                 setImgModal({
                   display: "block",
-                  source: images[certifcate.alias].default,
+                  source: images[certifcate.alias],
                   name: certifcate.alias,
                 })
               }
@@ -189,7 +279,9 @@ function MyCert() {
     );
   };
 
-  return (
+
+
+  return  (
     <div>
       {imgModal && (
         <div
@@ -216,15 +308,50 @@ function MyCert() {
           <div className="row">
             <main className="col-md-12">
               <header className="border-bottom mb-4 pb-3">
-                <div className="form-inline">
+                <div className="form-inline cert-title-background">
                   <span className="mr-md-auto">
-                    <h2 className="heading-text">
-                      {certificateDetails.length} Certificates
+                    <p className="heading-text">
+                      {certTotal} Certificates
                       {" (Edward Low Jin Zhang)"}
-                    </h2>
+                    </p>
                   </span>
                 </div>
-                <div className="cert-filter">
+                <div>
+                  <div className="container">
+                    <div className="row">
+                    <main className="col-md-1">
+                      <div style={{'padding': '11% 0% 0 10%'}}>
+                        <span style={{'fontWeight': 600, }}>Skillsets:</span> 
+                      </div>
+                      </main>
+                      <main className="col-md-9">
+                        <Select
+                            onChange={handleChange} 
+                            closeMenuOnSelect={false}
+                            isMulti
+                            options={tech && tech}
+                          />
+                      </main>
+
+                      <main className="col-md-2">
+                        <div style={{'padding': '3% 0% 0 40%'}}>
+                          <span className="filter-title">Issue Date: </span>
+                            <i
+                              className={
+                                sortByValue
+                                  ? "fas fa-sort-numeric-down"
+                                  : "fas fa-sort-numeric-up"
+                              }
+                              onClick={(e) => setSortByValue(!sortByValue)}
+                            ></i>
+                        </div>
+                      </main>
+                    </div>
+                  </div>      
+          
+                </div>
+                {/* <div className="cert-filter">
+
                   <span className="filter-title">Issue Date: </span>
 
                   <i
@@ -234,12 +361,10 @@ function MyCert() {
                         : "fas fa-sort-numeric-up"
                     }
                     onClick={(e) => setSortByValue(!sortByValue)}
-                  ></i>
-                </div>
+                  ></i> */}
+                {/* </div> */}
               </header>
-              {certificateDetails
-                .slice((pageIndex - 1) * pageNo, pageIndex * pageNo)
-                .map((item) => certificateCard(item))}
+              <div>{certificateDetails.length > 0 && certificateDetails.slice((pageIndex - 1) * pageNo, pageIndex * pageNo).map((item) => certificateCard(item))}</div>
               <div className="row cert-flex">
                 <div className="col-md-2 mt-4 cert-pages">
                   <select
@@ -270,5 +395,6 @@ function MyCert() {
       </section>
     </div>
   );
+  
 }
 export default MyCert;

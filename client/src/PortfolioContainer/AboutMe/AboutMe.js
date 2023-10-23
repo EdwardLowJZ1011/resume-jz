@@ -18,6 +18,7 @@ export default function AboutMe(props) {
   const { lang } = useContext(StoreContext);
   const language = lang[0];
   const [cookies] = useCookies(["user"]);
+  
   const SCREEN_CONSTANTS = {
     EN: {
       description:

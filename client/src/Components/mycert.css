@@ -1,3 +1,35 @@
+.cert-title-background {
+    padding: 15px 20px;
+    background-color: #24263b;
+    color: #fff;
+    font-size: 1.675em;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+
+.cert-title-background p {
+    margin-bottom: 0;
+    position: relative;
+    padding-left: 25px;
+    padding-right:20px
+}
+
+.cert-title-background p:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 3px;
+    height: 100%;
+    background-color: #fff;
+    left: 0;
+    top:0
+}
+
+.cert-title-background .button-block {
+    align-self: center;
+    text-align:right
+}
 
 .cert-date {
     background-color: #ff5823;
@@ -65,11 +97,12 @@ img.cert_pic{
     padding: 5px;
 }
 
-.heading-text{
+/* .heading-text{
     padding-top:10%;
-}
+} */
 
 .cert-filter{
+   padding-top: 1%;
    margin-left: 90%;
 }
 

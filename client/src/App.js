@@ -23,9 +23,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route exact path='/' element={< PortfolioContainer />}></Route>
-          <Route exact path='/mycertificate' element={< MyCert />}></Route>
-          <Route exact path='/login' element={< Login />}></Route>
-          <Route exact path='/otp' element={< OTPScreen />}></Route>
+          <Route exact path='/mycert' element={< MyCert />}></Route>
+          {/* <Route exact path='/login' element={< Login />}></Route>
+          <Route exact path='/otp' element={< OTPScreen />}></Route> */}
           {/* <Route exact path='/linkedin' element={< MyLinkedin />}></Route> */}
         </Routes>
       </div>
